@@ -9,3 +9,7 @@ terraform init
 # This command will create the resources defined in the main.tf file
 # It will prompt for confirmation before proceeding with the creation
 terraform apply
+
+
+# command to destroy terraform and delete resources on AWS
+terraform destroy
