@@ -9,9 +9,17 @@ provider "aws" {
 # with a backoff mechanism. The "queue_name" variable is passed to the module
 # to name the queue as "work-queue".
 module "work_queue" {
-  source = "./sqs_with_backoff"
+  source     = "./sqs_with_backoff"
   queue_name = "work-queue"
 }
+
+# added after the first terraform apply
+# This block defines another module named "thread_queue" that is also sourced
+module "thread_queue" {
+  source     = "./sqs_with_backoff"
+  queue_name = "thread-queue"
+}
+
 
 # This output block exposes the name of the main SQS queue created by the module.
 # It allows you to retrieve and display the queue name after the infrastructure
@@ -24,5 +32,5 @@ output "work_queue_name" {
 # the main SQS queue. The dead-letter queue is used to store messages that
 # cannot be processed successfully.
 output "work_queue_dead_letter_name" {
-    value = module.work_queue.dead_letter_queue_name
+  value = module.work_queue.dead_letter_queue_name
 }
