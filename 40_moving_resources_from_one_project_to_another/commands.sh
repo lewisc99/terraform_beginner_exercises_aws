@@ -36,3 +36,10 @@ terraform.exe state mv ^
   -state-out=../project_one/terraform.tfstate ^
   aws_vpc.main ^
   aws_vpc.my_vpc
+
+# to linux command line
+terraform state mv \
+  -state=terraform.tfstate \
+  -state-out=../project_one/terraform.tfstate \
+  aws_vpc.main \
+  aws_vpc.my_vpc
