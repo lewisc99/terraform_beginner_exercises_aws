@@ -1,0 +1,19 @@
+# Setting this property means that, as long as the backend API allows, 
+# Terraform will create the new resource before it destroys the old one. This can be handy in certain scenarios when replacing
+# infrastructure where you want to make sure the new infrastructure is created before the old infrastructure is destroyed.
+
+lifecycle {
+  create_before_destroy = true
+}
+
+
+
+# Setting this property will stop Terraform from destroying a resource as long as the property remains set.
+# This is useful for resources that are critical to your infrastructure and you want to make sure they are not destroyed by accident.
+# For example, if you have a production database that you do not want to be destroyed, you can set this property to true.
+# This will prevent Terraform from destroying the resource even if you run a destroy command.
+# However, you will still be able to destroy the resource manually using the console or API.
+
+lifecycle {
+  prevent_destroy = true
+}
